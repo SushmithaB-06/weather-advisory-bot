@@ -1,0 +1,182 @@
+sops:
+
+  # ==========================================================
+  # OUTDOOR EXERCISE
+  # ==========================================================
+
+  - id: EXERCISE_RUNNING_SUITABLE_001
+    category: outdoor_exercise
+    activity: running
+    severity: low
+    description: "Suitable conditions for running"
+    condition:
+      type: suitable_for_activity
+      required:
+        min_temperature: 10
+        max_temperature: 35
+        max_precipitation: 2
+        max_wind_speed: 25
+    advice: "Running is generally suitable under these weather conditions."
+
+  - id: EXERCISE_HEAT_001
+    category: outdoor_exercise
+    activity: running
+    severity: high
+    description: "Extreme heat"
+    condition:
+      type: temperature
+      operator: ">="
+      value: 38
+      unit: celsius
+    advice: "Avoid outdoor running when the temperature is 38°C or higher."
+
+  - id: EXERCISE_COLD_001
+    category: outdoor_exercise
+    activity: running
+    severity: medium
+    description: "Very cold conditions"
+    condition:
+      type: temperature
+      operator: "<="
+      value: 5
+      unit: celsius
+    advice: "Outdoor running should be avoided when the temperature is 5°C or lower."
+
+  - id: EXERCISE_WIND_001
+    category: outdoor_exercise
+    activity: cycling
+    severity: high
+    description: "Strong winds"
+    condition:
+      type: wind_speed
+      operator: ">="
+      value: 40
+      unit: kmh
+    advice: "Avoid outdoor cycling when wind speed is 40 km/h or higher."
+
+  - id: EXERCISE_RAIN_001
+    category: outdoor_exercise
+    activity: running
+    severity: medium
+    description: "Heavy precipitation"
+    condition:
+      type: precipitation
+      operator: ">="
+      value: 10
+      unit: mm
+    advice: "Avoid outdoor running during heavy precipitation of 10 mm or more."
+
+
+  # ==========================================================
+  # TRAVEL
+  # ==========================================================
+
+  - id: TRAVEL_HEAVY_RAIN_001
+    category: travel
+    activity: driving
+    severity: high
+    description: "Heavy rain while travelling"
+    condition:
+      type: precipitation
+      operator: ">="
+      value: 15
+      unit: mm
+    advice: "Avoid unnecessary driving during heavy precipitation of 15 mm or more."
+
+  - id: TRAVEL_HIGH_WIND_001
+    category: travel
+    activity: travel
+    severity: high
+    description: "High wind conditions"
+    condition:
+      type: wind_speed
+      operator: ">="
+      value: 50
+      unit: kmh
+    advice: "Avoid unnecessary travel when wind speed is 50 km/h or higher."
+
+  - id: TRAVEL_EXTREME_HEAT_001
+    category: travel
+    activity: travel
+    severity: medium
+    description: "Extreme heat during travel"
+    condition:
+      type: temperature
+      operator: ">="
+      value: 40
+      unit: celsius
+    advice: "Avoid unnecessary outdoor travel when the temperature is 40°C or higher."
+
+
+  # ==========================================================
+  # PICNIC / OUTDOOR ACTIVITY
+  # ==========================================================
+
+  - id: PICNIC_HEAVY_RAIN_001
+    category: outdoor_activity
+    activity: picnic
+    severity: high
+    description: "Picnic during heavy rain"
+    condition:
+      type: precipitation
+      operator: ">="
+      value: 10
+      unit: mm
+    advice: "A picnic should be postponed when heavy precipitation of 10 mm or more is expected."
+
+  - id: OUTDOOR_THUNDERSTORM_001
+    category: outdoor_activity
+    activity: outdoor_activity
+    severity: critical
+    description: "Thunderstorm conditions"
+    condition:
+      type: weather_code
+      operator: "in"
+      values:
+        - 95
+        - 96
+        - 99
+    advice: "Avoid outdoor activities during thunderstorms."
+
+  - id: PICNIC_GOOD_WEATHER_001
+    category: outdoor_activity
+    activity: picnic
+    severity: low
+    description: "Suitable conditions for a picnic"
+    condition:
+      type: suitable_for_activity
+      required:
+        max_precipitation: 2
+        max_wind_speed: 25
+        max_temperature: 35
+        min_temperature: 10
+    advice: "A picnic is generally suitable when precipitation is low, wind is not strong, and temperatures remain within the specified range."
+
+
+  # ==========================================================
+  # VULNERABLE GROUPS
+  # ==========================================================
+
+  - id: VULNERABLE_HEAT_001
+    category: vulnerable_groups
+    activity: vulnerable_person
+    severity: high
+    description: "Extreme heat affecting vulnerable people"
+    condition:
+      type: temperature
+      operator: ">="
+      value: 38
+      unit: celsius
+    advice: "People who may be vulnerable to heat should avoid prolonged outdoor exposure when the temperature is 38°C or higher."
+
+  - id: VULNERABLE_COLD_001
+    category: vulnerable_groups
+    activity: vulnerable_person
+    severity: high
+    description: "Very cold conditions affecting vulnerable people"
+    condition:
+      type: temperature
+      operator: "<="
+      value: 5
+      unit: celsius
+    advice: "People who may be vulnerable to cold should avoid prolonged outdoor exposure when the temperature is 5°C or lower."
